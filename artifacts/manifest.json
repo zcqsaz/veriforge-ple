@@ -1,39 +1,46 @@
 {
   "format": 1,
   "dev_set": "85ad6d96fbf76ee64d9fb6339b3bf342b07128a2ebadc0a10f008c95dac01a48",
-  "created": "2026-11-23T07:29:05Z",
+  "created": "2026-11-23T08:00:00Z",
   "harness": {
-    "name": "veriforge-ple-local4",
-    "model_api": "openai-compatible/qwen2.5:7b",
-    "tree": "f376223d574c2ea6aa83c237460bec179830c549c1a68e538a49b84e24d0f2c1",
+    "name": "veriforge-ple",
+    "model_api": "google-cloud/claude-opus-5-5",
+    "tree": "3d78f5981b6481e9c2efa757e02e3ff54e50459db43dd864f90a35c72c405a14",
     "files": {
       ".gitignore": "100644 e8b2b095b1dd3217a34ac297eb10cef3df71e833",
       "LICENSE": "100644 261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
       "README.md": "100644 22e2dd71a96941b9beda70edd8081f40dab965e4",
-      "harness.py": "100644 ea1f5d0af4f49fd39a16b76d26da0f7795784252",
+      "harness.py": "100644 d1e85a60c77cd34763c901ff739054aa2fb842a4",
       "package-lock.json": "100644 5dba6d2880e4966fca650af70db1c7345d14d20b",
       "package.json": "100644 701346d5e2e0f3fe4eee265d535319c0b8f634c5",
       "requirements.txt": "100644 7bc03d775075fc452cc88d8aa6292087dd8eec65",
       "serve.py": "100644 a0b209c2c38dc8204a48d1eb9e48b123f646707f",
-      "submission.yaml": "100644 df0f11a9a4e611c72e870ce7b2874cf424ee8db0",
+      "submission.yaml": "100644 b6ca3d52b79ace0eea42c99878a12e70b55a8a8d",
       "task-tools.ts": "100644 f0f8e7043d3d4c56e8c473b6af0686145706811b",
       "taskbridge.py": "100644 26cc3d6cf8dbcaed859731ce9a6881f4ca8bfe40"
     },
-    "commit": "44067b8fbb56e08bd439a4470d577dd656e17083",
-    "dirty": true
+    "commit": "1c0deea",
+    "dirty": false
   },
   "tasks": {
     "wind-diaphragm-shear": {
-      "run": "r19",
-      "trial": "wind-diaphragm-shear__9fgQf58",
+      "run": "starter",
+      "trial": "starter",
       "ended": "ok",
       "reward": 0.0,
-      "tree": "f376223d574c2ea6aa83c237460bec179830c549c1a68e538a49b84e24d0f2c1",
+      "tree": "3d78f5981b6481e9c2efa757e02e3ff54e50459db43dd864f90a35c72c405a14",
       "dev_set": "85ad6d96fbf76ee64d9fb6339b3bf342b07128a2ebadc0a10f008c95dac01a48",
-      "files": {},
+      "files": {
+        "filesystem/final_batch4__structural_task5_wind_diaphragm_shear__blind/output/submission.zip": "af8de1ec3e8f8d35023d8ac919d47f5740508845"
+      },
       "final_message": "8f2b1629cc4c8f4057b5bfcebc7f977e36899ad8",
       "deleted": [],
-      "skipped": []
+      "skipped": [
+        {
+          "path": "(starter)",
+          "reason": "Package structure generated for harness validation; engineering values require task execution."
+        }
+      ]
     }
   }
 }
