@@ -107,6 +107,17 @@ TIME_NOTE = (
     " deliverables."
 )
 
+DOMAIN_GUIDANCE = (
+    ("ifc", "For IFC/CAD tasks, inspect the supplied geometry and coordinate convention first. Generate valid IFC4 entities with connected placement, levels, and clearances, then run a parser or geometry audit before finishing."),
+    ("spreadsheet", "For spreadsheet tasks, inspect formulas and named ranges, preserve workbook structure, recalculate key totals independently, and reopen the saved workbook to confirm formulas and formatting survived."),
+    ("excel", "For spreadsheet tasks, inspect formulas and named ranges, preserve workbook structure, recalculate key totals independently, and reopen the saved workbook to confirm formulas and formatting survived."),
+    ("drawing", "For drawing tasks, identify sheet numbers and revision clouds, trace every review comment to a disposition, and verify the exported package contains the requested sheets and index."),
+    ("settlement", "For geotechnical and settlement tasks, state soil layers, groundwater, load increments, drainage assumptions, units, and acceptance limits, then recompute the governing case."),
+    ("electrical", "For electrical tasks, show the load basis, demand factors, conductor and protection assumptions, voltage-drop or fault checks, and a final pass/fail decision tied to the source documents."),
+    ("seismic", "For structural tasks, keep the load path explicit, separate tributary-area and code factors, and verify reactions, shears, capacities, and units with an independent calculation."),
+    ("fire", "For fire and thermal simulation tasks, compare convergence and mesh or test evidence quantitatively, identify the limiting case, and make the disposition traceable to the acceptance criteria."),
+)
+
 
 def note(session: taskbridge.Session) -> str:
   """Returns the text appended to Pi's system prompt for a task.
@@ -122,6 +133,10 @@ def note(session: taskbridge.Session) -> str:
   """
   left = session.time_left()
   text = NOTE.format(workdir=session.workdir)
+  instruction = session.instruction.lower()
+  hints = [hint for key, hint in DOMAIN_GUIDANCE if key in instruction]
+  if hints:
+    text += "\n\nTask-specific checks:\n- " + "\n- ".join(dict.fromkeys(hints))
   if left is None:
     return text
   return text + TIME_NOTE.format(minutes=int(left // 60))
